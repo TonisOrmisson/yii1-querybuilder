@@ -51,12 +51,14 @@ class QueryBuilder extends CWidget
 
     /** @inheritdoc */
     public function run(){
+        $reflect = new ReflectionClass($this->model);
 
         $params = array(
             'builderId' => $this->id,
             'filters' => json_encode($this->filters),
             'rules' => $this->rules ? json_encode($this->rules) : null,
             'model' => $this->model,
+            'modelClassName' =>$reflect->getShortName(),
             'attribute' => $this->attribute,
         );
         $this->render('builder',$params);

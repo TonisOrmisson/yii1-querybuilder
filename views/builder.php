@@ -4,7 +4,7 @@
 /** @var string $rules */
 /** @var CModel $model */
 /** @var string $attribute */
-
+/** @var string $modelClassName */
 ?>
 <?php Yii::app()->clientScript->registerCoreScript('jquery');
 
@@ -18,7 +18,7 @@ Yii::app()->clientScript->registerScript('build-query',
     $('#{$builderId}').on('change', function() {
       var result = $('#{$builderId}').queryBuilder('getRules');
       if(result!=null){
-          $('#rules').html(JSON.stringify(result, null, 2));
+          $('#{$modelClassName}_{$attribute}').val(JSON.stringify(result, null, 2));
       }
       
     });
@@ -31,4 +31,4 @@ if($rules){
 
 ?>
 <div id="<?=$builderId?>"></div>
-<?= CHtml::activeTextArea($model,$attribute,['id'=>'rules']) ?>
+<?= CHtml::activeHiddenField($model,$attribute) ?>
