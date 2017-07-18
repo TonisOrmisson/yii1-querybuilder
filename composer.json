@@ -1,0 +1,17 @@
+{
+    "name": "tonisormisson/yii1-querybuilder",
+    "description": "jQuery Query-builder widget for Yii1",
+    "keywords": ["yii1", "jquery","query-builder"],
+    "type": "yii-extension",
+    "license": "BSD-3-Clause",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+
+}
