@@ -11,6 +11,9 @@ class Translator extends CModel
     private $_params = [];
     private $_operators;
 
+    /** @var  CDbCriteria $criteria */
+    public $criteria;
+
     /**
      * Constructors.
      * @param array $data Rules configuration
@@ -98,6 +101,8 @@ class Translator extends CModel
         if (!isset($data['rules']) || !$data['rules']) {
             return '';
         }
+
+        $this->criteria =  new CDbCriteria();
 
         $where = [];
         $condition = " " . $data['condition'] . " ";
