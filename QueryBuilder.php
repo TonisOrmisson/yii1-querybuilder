@@ -14,6 +14,12 @@ class QueryBuilder extends CWidget
     /** @var array $rules */
     public $rules;
 
+    /** @var CModel $model*/
+    public $model;
+
+    /** @var string $attribute*/
+    public $attribute;
+
     public $cssFile;
     private $jsFile;
 
@@ -22,6 +28,12 @@ class QueryBuilder extends CWidget
     {
         if(!$this->filters){
             throw new ErrorException('Filters must be set for QueryBuilder');
+        }
+        if(!$this->model){
+            throw new ErrorException('Model must be set for QueryBuilder');
+        }
+        if(!$this->attribute){
+            throw new ErrorException('Attribute must be set for QueryBuilder');
         }
 
         $cssFileName=dirname(__FILE__).DIRECTORY_SEPARATOR.'query-builder'.DIRECTORY_SEPARATOR.'css'.DIRECTORY_SEPARATOR.'query-builder.default.css';
@@ -44,6 +56,8 @@ class QueryBuilder extends CWidget
             'builderId' => $this->id,
             'filters' => json_encode($this->filters),
             'rules' => $this->rules ? json_encode($this->rules) : null,
+            'model' => $this->model,
+            'attribute' => $this->attribute,
         );
         $this->render('builder',$params);
     }
