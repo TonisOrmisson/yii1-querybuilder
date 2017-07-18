@@ -1,4 +1,7 @@
+
+
 ## NB! work in progress here ....
+This is not a working widget (yet)!!
 
 ## Yii1 QueryBuilder widget
 This is an implementation of jQuery Querybuilder for Yii1 
