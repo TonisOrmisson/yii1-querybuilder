@@ -11,6 +11,8 @@ class QueryBuilder extends CWidget
     /** @var array $filters */
     public $filters;
 
+    /** @var array $rules */
+    public $rules;
 
     public $cssFile;
     private $jsFile;
@@ -18,25 +20,30 @@ class QueryBuilder extends CWidget
     /** @inheritdoc */
     public function init()
     {
+        if(!$this->filters){
+            throw new ErrorException('Filters must be set for QueryBuilder');
+        }
+
         $cssFileName=dirname(__FILE__).DIRECTORY_SEPARATOR.'query-builder'.DIRECTORY_SEPARATOR.'css'.DIRECTORY_SEPARATOR.'query-builder.default.css';
         $jsFileName=dirname(__FILE__).DIRECTORY_SEPARATOR.'query-builder'.DIRECTORY_SEPARATOR.'js'.DIRECTORY_SEPARATOR.'query-builder.standalone.js';
         $this->cssFile=Yii::app()->getAssetManager()->publish($cssFileName);
         $this->jsFile = Yii::app()->getAssetManager()->publish($jsFileName);
         $this->registerQueryBuilderAssets();
 
+        // set default id
         if(!$this->id){
             $this->id = "query-builder";
         }
-        $this->filters =array(array('id'=>1,'label'=>'test','type'=>'string'));
-
         parent::init();
     }
 
     /** @inheritdoc */
     public function run(){
+
         $params = array(
             'builderId' => $this->id,
             'filters' => json_encode($this->filters),
+            'rules' => $this->rules ? json_encode($this->rules) : null,
         );
         $this->render('builder',$params);
     }
