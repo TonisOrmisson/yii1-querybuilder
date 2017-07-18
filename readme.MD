@@ -1,14 +1,14 @@
-# NB! work in progress here ....
+## NB! work in progress here ....
 
-# Yii1 QueryBuilder widget
+## Yii1 QueryBuilder widget
 This is an implementation of jQuery Querybuilder for Yii1 
 
-## Dependencies
+### Dependencies
 this widget depends on jQuery and Bootstrap3. Due to Yii1 widgets logic the widget itself
  does not manage the dependencies. You need to install & load the jQuery and Bootstrap3 
  in your app yourself prior using this widget!
 
-## Basic usage example
+### Basic usage example
 In view:
  
 ```
