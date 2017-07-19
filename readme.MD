@@ -1,8 +1,3 @@
-
-
-## NB! work in progress here ....
-This is not a working widget (yet)!!
-
 ## Yii1 QueryBuilder widget
 This is an implementation of jQuery Querybuilder for Yii1 
 
@@ -41,8 +36,13 @@ public function actionIndex()
         if(isset($_POST['SomeModel'])){
             $model->attributes =$_POST['SomeModel'];
             $rules = json_decode($someModel->myquerystring);
+            if($rules){
+                Yii::import('application.extensions.yii1-querybuilder.Translator');
+                // translate rules to SQL (with params)
+                $translator = new Translator($rules);
+                // feed the translated sql & params to Yii find() method
+                $result = Customer::model()->find($translator->where, $translator->params);
+            }
         }
-        $this->render('index',['rules'=>$rules]);
-
 }
 ```
