@@ -14,6 +14,11 @@ class Translator extends CModel
 
     /** @var  CDbCriteria $criteria */
     public $criteria;
+    /**
+     * @var array The params from that are already set so we don't overwrite them
+     */
+    private $currentParams = [];
+    private $paramsCount = 0;
 
     /**
      * Constructors.
@@ -122,7 +127,7 @@ class Translator extends CModel
                     }
 
                     foreach ($value as $v) {
-                        $params[":p$i"] = $v;
+                        $params[":".$this->getNewParamName()] = $v;
                         $i++;
                     }
                 }
@@ -153,7 +158,25 @@ class Translator extends CModel
         return $this->_params;
     }
 
-
+    /**
+     * Get a param name that should not conflict with any params already set
+     * @return string
+     */
+    private function getNewParamName(){
+        $paramPrefix = 'p';
+        if(!empty($this->currentParams) && $this->paramsCount < count($this->currentParams) ){
+            $this->paramsCount = count($this->currentParams) +1;
+        }else{
+            $this->paramsCount = $this->paramsCount + 1;
+        }
+        return $paramPrefix.$this->paramsCount;
+    }
+    /**
+     * @param array $currentParams
+     */
+    public function setCurrentParams($currentParams) {
+        $this->currentParams = $currentParams;
+    }
     /**
      * NB! This is a copy-paste from Yii2 ArrayHelper
      */
