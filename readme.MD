@@ -7,7 +7,7 @@ this widget depends on jQuery and Bootstrap3. Due to Yii1 widgets logic the widg
  in your app yourself prior using this widget!
 
 ### Basic usage example
-In view:
+#### In view:
  
 ```
 echo CHtml::beginForm();
@@ -32,7 +32,7 @@ echo CHtml::submitButton('go');
 echo CHtml::endForm();
 
 ```
-In Controller:
+#### In Controller:
 ```
 public function actionIndex()
 {
