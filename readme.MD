@@ -1,6 +1,9 @@
 ## Yii1 QueryBuilder widget
 This is an implementation of jQuery Querybuilder for Yii1 
 
+### DEMO
+https://demo.andmemasin.eu/yii1-querybuilder/
+
 ### Dependencies
 this widget depends on jQuery and Bootstrap3. Due to Yii1 widgets logic the widget itself
  does not manage the dependencies. You need to install & load the jQuery and Bootstrap3 
