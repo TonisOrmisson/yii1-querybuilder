@@ -48,7 +48,7 @@ public function actionIndex()
                 $result = SomeModel::model()->find($translator->where, $translator->params);
             }
         }
-		$this->render('index',[
+        $this->render('index',[
             'rules'=>$rules,
         ]);
 }
