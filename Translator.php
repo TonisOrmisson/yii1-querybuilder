@@ -14,9 +14,8 @@ class Translator extends CModel
 
     /** @var  CDbCriteria $criteria */
     public $criteria;
-    /**
-     * @var array The params from that are already set so we don't overwrite them
-     */
+
+    /** @var array The params from that are already set so we don't overwrite them */
     private $currentParams = [];
     private $paramsCount = 0;
 
@@ -177,6 +176,7 @@ class Translator extends CModel
     public function setCurrentParams($currentParams) {
         $this->currentParams = $currentParams;
     }
+
     /**
      * NB! This is a copy-paste from Yii2 ArrayHelper
      */
