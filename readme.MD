@@ -48,5 +48,8 @@ public function actionIndex()
                 $result = Customer::model()->find($translator->where, $translator->params);
             }
         }
+		$this->render('index',[
+            'rules'=>$rules,
+        ]);
 }
 ```
