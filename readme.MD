@@ -45,7 +45,7 @@ public function actionIndex()
                 // translate rules to SQL (with params)
                 $translator = new Translator($rules);
                 // feed the translated sql & params to Yii find() method
-                $result = Customer::model()->find($translator->where, $translator->params);
+                $result = SomeModel::model()->find($translator->where, $translator->params);
             }
         }
 		$this->render('index',[
