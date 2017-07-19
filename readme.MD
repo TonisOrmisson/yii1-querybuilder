@@ -16,9 +16,13 @@ $this->widget('ext.yii1-querybuilder.QueryBuilder',
         'model'=>$model,
         'attribute'=>'myquerystring',
         'filters'=>[
-            ['id' => 'id', 'label' => 'Id', 'type' => 'integer'],
-            ['id' => 'name', 'label' => 'Name', 'type' => 'string'],
-            ['id' => 'lastName', 'label' => 'Last Name', 'type' => 'string']
+            ['id'=>'name','label'=>'Name (string)','type'=>'string'],
+            ['id'=>'age','label'=>'Age (integer)','type'=>'integer'],
+            ['id'=>'height','label'=>'Height (double)','type'=>'double'],
+            ['id'=>'birthday','label'=>'Birthday (date)','type'=>'date'],
+            ['id'=>'time','label'=>'Time (time)','type'=>'time'],
+            ['id'=>'changed_at','label'=>'Last changed (datetime)','type'=>'datetime'],
+            ['id'=>'is_active','label'=>'Is Active? (boolean)','type'=>'boolean'],
         ],
         'rules'=>$rules,
 
